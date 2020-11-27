@@ -1,0 +1,1 @@
+CREATE TABLE emp_tab(emp_no int(5),e_name varchar(20),e_sal float(10,2),e_hiredate date)

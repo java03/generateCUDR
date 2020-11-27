@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yueqian.gen.mapper.EmpTabMapper">
+	<resultMap type="EmpTabVO" id="EmpTabMap">
+		<id property="empNo" column="emp_no"/>
+		<result property="eName" column="e_name"/>
+		<result property="eSal" column="e_sal"/>
+		<result property="eHiredate" column="e_hiredate"/>
+	</resultMap>
+	<select id="getEmpTabByIdVO" resultMap="EmpTabMap" parameterType="string">
+		SELECT  emp_no, e_name, e_sal, e_hiredate FROM emp_tab WHERE emp_no = #{id}
+	</select>
+	<select id="getEmpTabVOs" resultMap="EmpTabMap">
+		SELECT  emp_no, e_name, e_sal, e_hiredate FROM emp_tab
+	</select>
+	<delete id="delEmpTabVO" parameterType="string">
+		DELETE FROM emp_tab WHERE emp_no = #{id}
+	</delete>
+	<update id="modifyEmpTabVO" parameterType="EmpTabVO">
+		UPDATE emp_tab SET  emp_no=#{empNo},  e_name=#{eName},  e_sal=#{eSal},  e_hiredate=#{eHiredate} WHERE emp_no = #{empNo}
+	</update>
+	<insert id="addEmpTabVO" parameterType="EmpTabVO">
+		INSERT INTO emp_tab( emp_no,  e_name,  e_sal,  e_hiredate)  VALUES(#{empNo}, #{eName}, #{eSal}, #{eHiredate})
+	</insert>
+</mapper>
